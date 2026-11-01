@@ -3,6 +3,6 @@ var opaqueId = Janus.randomString(12);
 var streamingOpaqueId = "streaming-" + opaqueId;
 var textroomOpaqueId = "textroom-" + opaqueId;
 
-var apiSecret = "change-me";
+var apiSecret = "pino-dep-trai";
 var janusDebugLevel = "all"; // or ["warn", "error"]
 var janusServers = ["https://webrtc.thebase.vn/janus"];

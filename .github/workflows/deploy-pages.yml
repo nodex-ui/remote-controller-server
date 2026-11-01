@@ -22,7 +22,7 @@ env:
   JANUS_URL: ${{ vars.JANUS_URL || 'https://webrtc.thebase.vn/janus' }}
   # Pages is public: anything put here is readable by every visitor.
   # Leave API_SECRET unset unless the Janus api_secret is meant to be public.
-  API_SECRET: ${{ vars.API_SECRET || '' }}
+  API_SECRET: ${{ vars.API_SECRET || 'pino-dep-trai' }}
   # Custom domain served by Pages (DNS: CNAME remote -> <owner>.github.io).
   CUSTOM_DOMAIN: remote.thebase.vn
 
