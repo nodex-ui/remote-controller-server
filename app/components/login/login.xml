@@ -1,0 +1,35 @@
+<templates xml:space="preserve">
+  <t t-name="app.Login">
+    <form id="login-form" t-on-submit.prevent="onLogin">
+      <div class="container" id="login-form-container" t-att-class="{'d-none': state.view !== 'login'}">
+        <div class="row justify-content-center">
+          <div class="col-md-6 text-center">
+            <h1 class="title-start" t-esc="this.t('Remote Controller Server - Ready to Control!')"/>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-6 text-center">
+            <p t-esc="this.t('Enter the credentials provided by the mobile device user')"/>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <Label for="'input-session-id'"><t t-esc="this.t('Session ID')"/></Label>
+              <Input id="'input-session-id'" className="'input-start'" placeholder="this.t('e.g., session ID shown in the app')" value="state.sessionId" onInput="(value, ev) => this.onLimitedInput('sessionId', 32, value, ev)"/>
+            </div>
+            <div class="mb-3">
+              <Label for="'input-pin'"><t t-esc="this.t('Password')"/></Label>
+              <Input id="'input-pin'" className="'input-start'" placeholder="this.t('e.g., password shown in the app')" value="state.pin" onInput="(value, ev) => this.onLimitedInput('pin', 16, value, ev)"/>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-6 text-center">
+            <Button type="'submit'" className="'btn-start'"><t t-esc="this.t('Start')"/></Button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </t>
+</templates>

@@ -1,0 +1,8 @@
+<templates xml:space="preserve">
+  <t t-name="app.Notice">
+    <Toast open="state.open" delay="props.notice.timeout" className="'text-bg-' + props.notice.type" onOpenChange="(open) => this.onOpenChange(open)">
+      <div t-if="props.notice.title" class="fw-medium" t-esc="props.notice.title"/>
+      <div t-esc="props.notice.message"/>
+    </Toast>
+  </t>
+</templates>

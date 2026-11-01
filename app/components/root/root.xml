@@ -1,0 +1,19 @@
+<templates xml:space="preserve">
+  <t t-name="app.Root">
+    <div class="d-flex flex-column min-vh-100" t-att-class="{'debug-mode': state.debug}">
+      <div id="pageLoader" class="loader loader-default" t-att-class="{'is-active': state.pageLoader.active}" t-att-data-text="state.pageLoader.text"/>
+      <Navbar/>
+      <div t-att-class="{'d-none': state.page !== 'console'}">
+        <Login/>
+        <Device/>
+        <Debug/>
+      </div>
+      <Docs t-if="state.page === 'docs'"/>
+      <ErrorDialog/>
+      <JanusDialog/>
+      <div class="notice-stack position-fixed top-0 end-0 p-3 d-flex flex-column gap-2" style="z-index: 1090; width: 24rem; max-width: 100vw;">
+        <Notice t-foreach="state.notices" t-as="notice" t-key="notice.id" notice="notice"/>
+      </div>
+    </div>
+  </t>
+</templates>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /janus
+Disallow: /admin/
+Disallow: /settings.js
+
+Sitemap: @SITE_URL@/sitemap.xml

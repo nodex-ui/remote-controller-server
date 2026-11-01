@@ -1,0 +1,23 @@
+msgid ""
+msgstr "Language: vi\n"
+
+msgid "Remote Controller Server - Ready to Control!"
+msgstr "Remote Controller Server - Sẵn sàng điều khiển!"
+
+msgid "Enter the credentials provided by the mobile device user"
+msgstr "Nhập thông tin do người dùng thiết bị di động cung cấp"
+
+msgid "Session ID"
+msgstr "Mã phiên"
+
+msgid "e.g., session ID shown in the app"
+msgstr "ví dụ: mã phiên hiển thị trong ứng dụng"
+
+msgid "Password"
+msgstr "Mật khẩu"
+
+msgid "e.g., password shown in the app"
+msgstr "ví dụ: mật khẩu hiển thị trong ứng dụng"
+
+msgid "Start"
+msgstr "Bắt đầu"

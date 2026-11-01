@@ -1,0 +1,16 @@
+<templates xml:space="preserve">
+  <t t-name="app.ErrorDialog">
+    <AlertDialog open="state.dialog.open" onOpenChange="(open) => this.onOpenChange(open)">
+      <AlertDialogContent>
+        <AlertDialogDescription>
+          <t t-esc="state.dialog.message"/>
+        </AlertDialogDescription>
+        <AlertDialogFooter>
+          <AlertDialogAction onClick="() => ui.closeDialog()">
+            <t t-esc="state.dialog.okLabel"/>
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  </t>
+</templates>

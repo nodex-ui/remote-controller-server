@@ -1,0 +1,14 @@
+msgid ""
+msgstr "Language: vi\n"
+
+msgid "Documents"
+msgstr "Tài liệu"
+
+msgid "No documents available."
+msgstr "Chưa có tài liệu."
+
+msgid "Loading…"
+msgstr "Đang tải…"
+
+msgid "Unable to load this document."
+msgstr "Không thể tải tài liệu này."

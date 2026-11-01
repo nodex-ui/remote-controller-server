@@ -1,0 +1,31 @@
+<templates xml:space="preserve">
+  <t t-name="app.Device">
+    <div class="container" id="main-window" t-att-class="{'d-none': state.view !== 'main'}">
+      <div class="row justify-content-center">
+        <span id="textDeviceName" t-esc="state.deviceName"/>
+      </div>
+      <div class="row justify-content-center">
+        <div class="d-flex align-items-center justify-content-center flex-wrap gap-2 col-md-4 text-center">
+          <span class="link" id="btnNotifications" t-on-click="() => this.sendCommand('notifications')" t-esc="this.t('Status Bar')"/>
+          <span class="link" id="btnDisconnect" t-on-click="disconnect" t-esc="this.t('Disconnect')"/>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-auto justify-content-center text-center" id="navButton">
+          <img src="static/images/icon-back.png" class="active-icon" style="width: 24px;" alt="Back" id="btnBack" t-on-click="() => this.sendCommand('back')"/>
+          <img src="static/images/icon-home.png" class="mx-3 active-icon" style="width: 24px;" alt="Home" id="btnHome" t-on-click="() => this.sendCommand('home')"/>
+          <img src="static/images/icon-recents.png" class="active-icon" style="width: 24px;" alt="Recents" id="btnRecents" t-on-click="() => this.sendCommand('recents')"/>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-auto justify-content-center text-center p-0 position-relative" id="windowStream" t-att-style="`--ar: ${state.videoWidth} / ${state.videoHeight}; max-width: ${state.videoWidth}px`">
+          <div id="videoLoader" class="loader loader-bouncing" t-att-class="{'is-active': state.videoLoader.active}"/>
+          <div id="deviceGestures" t-on-pointerdown.prevent="onGestureDown" t-on-pointerup.prevent="onGestureUp" t-on-pointercancel.prevent="onGestureUp" t-on-pointermove="onGestureMove"/>
+          <video class="rounded centered border" id="streamingRemoteVideo" t-ref="video" autoplay="" playsinline="" t-att-style="`aspect-ratio: ${state.videoWidth} / ${state.videoHeight}`" t-on-playing="onPlaying"/>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+      </div>
+    </div>
+  </t>
+</templates>

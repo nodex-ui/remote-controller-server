@@ -1,0 +1,26 @@
+<templates xml:space="preserve">
+  <t t-name="app.Navbar">
+    <nav class="navbar bg-body-tertiary border-bottom mb-3">
+      <div class="container flex-wrap gap-2">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#/console">
+          <img t-att-src="'https://cdn.jsdelivr.net/npm/nodexui@1.3.2/dist/logo/logo-' + (state.theme === 'dark' ? 'dark' : 'light') + '.svg'" alt="Nodex" height="28"/>
+          <span>Remote Controller Server</span>
+        </a>
+        <ul class="navbar-nav flex-row gap-3 me-auto ms-md-3">
+          <li class="nav-item">
+            <a class="nav-link" t-att-class="{'active fw-semibold': state.page === 'console'}" href="#/console" t-esc="this.t('Console')"/>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" t-att-class="{'active fw-semibold': state.page === 'docs'}" href="#/docs" t-esc="this.t('Documents')"/>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <span t-if="state.view === 'main' and state.page === 'console'" class="text-muted small" t-esc="state.deviceName"/>
+          <Button t-if="state.view === 'main' and state.page === 'console'" variant="'outline'" size="'sm'" onClick="() => this.disconnect()"><t t-esc="this.t('Disconnect')"/></Button>
+          <Button variant="'ghost'" size="'icon'" icon="'languages'" ariaLabel="this.t('Switch language')" attrs="{title: this.t('Switch language') + ' (' + lang.toUpperCase() + ')'}" onClick="() => this.toggleLang()"/>
+          <Button variant="'ghost'" size="'icon'" icon="state.theme === 'dark' ? 'sun' : 'moon'" ariaLabel="state.theme === 'dark' ? this.t('Switch to light theme') : this.t('Switch to dark theme')" attrs="{title: state.theme === 'dark' ? this.t('Switch to light theme') : this.t('Switch to dark theme')}" onClick="() => this.toggleTheme()"/>
+        </div>
+      </div>
+    </nav>
+  </t>
+</templates>

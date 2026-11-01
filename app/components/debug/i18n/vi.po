@@ -1,0 +1,11 @@
+msgid ""
+msgstr "Language: vi\n"
+
+msgid "Debug utils"
+msgstr "Công cụ gỡ lỗi"
+
+msgid "Message"
+msgstr "Tin nhắn"
+
+msgid "Send"
+msgstr "Gửi"

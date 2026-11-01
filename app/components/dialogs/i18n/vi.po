@@ -1,0 +1,23 @@
+msgid ""
+msgstr "Language: vi\n"
+
+msgid "Janus server"
+msgstr "Máy chủ Janus"
+
+msgid "Server address(es), comma separated"
+msgstr "Địa chỉ máy chủ, phân cách bằng dấu phẩy"
+
+msgid "Default:"
+msgstr "Mặc định:"
+
+msgid "API secret"
+msgstr "Khóa API"
+
+msgid "Cancel"
+msgstr "Hủy"
+
+msgid "Use default"
+msgstr "Dùng mặc định"
+
+msgid "Save & reconnect"
+msgstr "Lưu và kết nối lại"

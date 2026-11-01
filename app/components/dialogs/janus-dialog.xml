@@ -1,0 +1,28 @@
+<templates xml:space="preserve">
+  <t t-name="app.JanusDialog">
+    <AlertDialog open="state.janusDialog.open">
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle><t t-esc="this.t('Janus server')"/></AlertDialogTitle>
+          <AlertDialogDescription>
+            <t t-esc="state.janusDialog.message"/>
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <div class="mb-3">
+          <Label for="'janus-servers'"><t t-esc="this.t('Server address(es), comma separated')"/></Label>
+          <Input id="'janus-servers'" placeholder="'https://host:8089/janus'" value="state.janusDialog.servers" onInput="(value) => state.janusDialog.servers = value"/>
+          <div class="form-text"><t t-esc="this.t('Default:')"/> <t t-esc="state.janusDialog.defaults"/></div>
+        </div>
+        <div class="mb-3">
+          <Label for="'janus-secret'"><t t-esc="this.t('API secret')"/></Label>
+          <Input id="'janus-secret'" type="'password'" autocomplete="'off'" value="state.janusDialog.apiSecret" onInput="(value) => state.janusDialog.apiSecret = value"/>
+        </div>
+        <AlertDialogFooter>
+          <Button variant="'ghost'" onClick="() => ui.closeJanusDialog()"><t t-esc="this.t('Cancel')"/></Button>
+          <Button variant="'outline'" onClick="() => ui.resetJanusDialog()"><t t-esc="this.t('Use default')"/></Button>
+          <Button onClick="() => ui.saveJanusDialog()"><t t-esc="this.t('Save &amp; reconnect')"/></Button>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  </t>
+</templates>

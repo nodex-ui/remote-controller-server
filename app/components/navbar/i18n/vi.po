@@ -1,0 +1,20 @@
+msgid ""
+msgstr "Language: vi\n"
+
+msgid "Console"
+msgstr "Điều khiển"
+
+msgid "Documents"
+msgstr "Tài liệu"
+
+msgid "Disconnect"
+msgstr "Ngắt kết nối"
+
+msgid "Switch language"
+msgstr "Đổi ngôn ngữ"
+
+msgid "Switch to dark theme"
+msgstr "Chuyển sang giao diện tối"
+
+msgid "Switch to light theme"
+msgstr "Chuyển sang giao diện sáng"

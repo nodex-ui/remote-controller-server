@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" b-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Remote Controller Server</title>
+    <meta name="description" content="Open source web application to access Android devices remotely (remote support program)" />
+    <link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/npm/nodexui@1.3.2/dist/logo/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/npm/nodexui@1.3.2/dist/logo/light/pwa/favicon-32.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="robots" content="index, follow" />
+    <meta name="application-name" content="Remote Controller Server" />
+    <link rel="canonical" href="@SITE_URL@/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Remote Controller Server" />
+    <meta property="og:title" content="Remote Controller Server" />
+    <meta property="og:description" content="Open source web application to access Android devices remotely (remote support program)" />
+    <meta property="og:url" content="@SITE_URL@/" />
+    <meta property="og:image" content="https://cdn.jsdelivr.net/npm/nodexui@1.3.2/dist/logo/light/pwa/icon-512.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Remote Controller Server" />
+    <meta name="twitter:description" content="Open source web application to access Android devices remotely (remote support program)" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"WebApplication","name":"Remote Controller Server","description":"Open source web application to access Android devices remotely (remote support program)","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","url":"@SITE_URL@/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nodexui@1.3.2/dist/nodexui.min.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "nodexui": "https://cdn.jsdelivr.net/npm/nodexui@1.3.2/dist/nodexui.esm.js",
+          "nodexui/templates": "https://cdn.jsdelivr.net/npm/nodexui@1.3.2/dist/nodexui.templates.xml",
+          "nodexui/i18n": "https://cdn.jsdelivr.net/npm/nodexui@1.3.2/dist/nodexui.i18n.esm.js"
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body class="bg-body text-body">
+    <div id="app"></div>
+    <noscript><h1>Remote Controller Server</h1><p>Open source web application to access Android devices remotely. This app needs JavaScript enabled to run.</p></noscript>
+
+    <!-- Janus client and WebRTC adapter are classic scripts that define globals; settings.js (written by the deploy) comes after them. -->
+    <script src="static/lib/adapter-6.4.0.min.js"></script>
+    <script src="static/lib/janus.js"></script>
+    <!-- Deployed settings.js still configures toastr (now replaced by BaseUI toasts); this stub keeps it from failing. -->
+    <script>
+      window.toastr = { options: {} };
+    </script>
+    <script src="settings.js"></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

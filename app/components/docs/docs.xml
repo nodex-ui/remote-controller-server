@@ -1,0 +1,20 @@
+<templates xml:space="preserve">
+  <t t-name="app.Docs">
+    <div class="container pb-4">
+      <div class="row g-4">
+        <nav class="col-md-3" t-att-aria-label="this.t('Documents')">
+          <h2 class="h6 text-uppercase text-muted mb-2" t-esc="this.t('Documents')"/>
+          <div class="list-group">
+            <a t-foreach="state.docs.list" t-as="doc" t-key="doc.path" class="list-group-item list-group-item-action" t-att-class="{'active': state.docs.path === doc.path}" t-att-href="'#/docs/' + doc.path" t-esc="doc.title"/>
+          </div>
+        </nav>
+        <main class="col-md-9 docs-content">
+          <p t-if="state.docs.status === 'empty'" class="text-muted" t-esc="this.t('No documents available.')"/>
+          <p t-elif="state.docs.status === 'loading'" class="text-muted" t-esc="this.t('Loading…')"/>
+          <p t-elif="state.docs.status === 'error'" class="text-danger" t-esc="this.t('Unable to load this document.')"/>
+          <Markdown t-elif="state.docs.status === 'ready'" t-key="state.docs.path + state.theme" content="state.docs.content"/>
+        </main>
+      </div>
+    </div>
+  </t>
+</templates>

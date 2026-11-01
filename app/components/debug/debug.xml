@@ -1,0 +1,40 @@
+<templates xml:space="preserve">
+  <t t-name="app.Debug">
+    <div class="container debug-stuff" t-att-class="{'d-none': !state.debug}">
+      <div class="row">
+        <div class="col-md-auto">
+          <Card>
+            <CardHeader>
+              <span class="card-title">
+                <Button variant="'secondary'" id="debugClose" onClick="() => this.closeDebug()">X</Button>
+                <t t-esc="this.t('Debug utils')"/>
+                <Badge variant="'info'" className="'ms-1'" label="state.status"/>
+                <t t-if="state.statsVisible">
+                  <Badge variant="'primary'" className="'ms-1'" label="state.resolution"/>
+                  <Badge variant="'info'" className="'ms-1'" label="state.bitrate"/>
+                </t>
+              </span>
+            </CardHeader>
+            <div class="card-body relative" t-att-style="'overflow-x: auto;' + (state.chatSized ? ' height: 250px;' : '')" t-ref="chat">
+              <p t-foreach="state.messages" t-as="message" t-key="message_index" t-att-style="message.color ? 'color: ' + message.color : ''">
+                [                <t t-esc="message.time"/>
+]                <b t-if="message.lead" t-esc="message.lead"/>
+                <i t-if="message.italic" t-esc="message.text"/>
+                <b t-elif="message.bold" t-esc="message.text"/>
+                <t t-else="" t-esc="message.text"/>
+              </p>
+            </div>
+            <CardFooter>
+              <form id="chat-form" t-on-submit.prevent="onChatSubmit">
+                <div class="d-flex gap-1">
+                  <Input className="'flex-grow-1'" placeholder="this.t('Message')" autocomplete="'off'" disabled="!state.chatEnabled" value="state.chatInput" onInput="(value) => state.chatInput = value"/>
+                  <Button type="'submit'" disabled="!state.chatEnabled"><t t-esc="this.t('Send')"/></Button>
+                </div>
+              </form>
+            </CardFooter>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </t>
+</templates>

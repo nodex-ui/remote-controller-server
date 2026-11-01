@@ -1,0 +1,8 @@
+msgid ""
+msgstr "Language: vi\n"
+
+msgid "Status Bar"
+msgstr "Thanh trạng thái"
+
+msgid "Disconnect"
+msgstr "Ngắt kết nối"

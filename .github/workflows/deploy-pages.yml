@@ -1,0 +1,68 @@
+name: Deploy app to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "app/**"
+      - ".github/workflows/deploy-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  # Repo variables (Settings > Secrets and variables > Actions > Variables).
+  JANUS_URL: ${{ vars.JANUS_URL || 'https://webrtc.thebase.vn/janus' }}
+  # Pages is public: anything put here is readable by every visitor.
+  # Leave API_SECRET unset unless the Janus api_secret is meant to be public.
+  API_SECRET: ${{ vars.API_SECRET || '' }}
+  # Custom domain served by Pages (DNS: CNAME remote -> <owner>.github.io).
+  CUSTOM_DOMAIN: remote.thebase.vn
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build static site (mirrors `make app-build`)
+        run: |
+          mkdir -p _site
+          cp -r app/. _site/
+          rm -f _site/settings.example.js
+          cat > _site/settings.js <<JS
+          var opaqueId = Janus.randomString(12);
+          var streamingOpaqueId = "streaming-" + opaqueId;
+          var textroomOpaqueId = "textroom-" + opaqueId;
+          var apiSecret = "${API_SECRET}";
+          var janusDebugLevel = ['warn', 'error'];
+          var janusServers = [ "${JANUS_URL}" ];
+          JS
+          sed -i 's/^          //' _site/settings.js
+          printf '{"version":"%s"}\n' "$(cd _site && find . -type f ! -name version.json | sort | xargs sha256sum | sha256sum | cut -c1-16)" > _site/version.json
+          sed -i "s|@SITE_URL@|https://${CUSTOM_DOMAIN}|g" _site/index.html _site/sitemap.xml _site/robots.txt
+          printf '%s\n' "${CUSTOM_DOMAIN}" > _site/CNAME
+          touch _site/.nojekyll
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
